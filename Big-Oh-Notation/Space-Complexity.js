@@ -36,7 +36,7 @@ hiNTimes(6);
 'scjsbfshdbfhsdbfksjdbfkjasduyfga'.length;
 
 /**
- * when asked this depends on the language you are using to find the length
+ * when asked, this depends on the language you are using to find the length
  * Others might be going through the entire string to know its length
  * Here the .length is a property of strings in java script
  * so it takes constant time O(1)  
