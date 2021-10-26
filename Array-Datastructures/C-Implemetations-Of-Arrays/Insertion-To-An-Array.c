@@ -8,30 +8,30 @@
 
 int main(){
 
-    int LA[] = {23,98,67,57,48,12,32,45,60,72};
+    int PN[] = {23,98,67,57,48,12,32,45,60,72};
     int k = 6;
     int ITEM = 83;
     int N = 10;
     int J = N;
     int i = 0;
 
-    printf("The original elements of the array are : ");
+    printf("The original elements of the array are : \n");
     for(i = 0; i < N; i++) {
-        printf("LA[%d] = %d ", i , LA[i]);
+        printf("PN[%d] = %d \n", i , PN[i]);
     }
 
-    N = N + 1;
+    N += 1;
 
-    while(J >= k){
-        LA[J + 1] = LA[J];
-        j = j - 1;
-        if (j == k){
-            LA[K] = ITEM;
-        }
+    for(i = J-1; i >= k; i--){
+        PN[J] = PN[i];
+        J--;
     }
 
-    printf("The new elements of the array are : ");
-    for(i = 0; i < N; i++) {
-        printf("LA[%d] = %d ", i , LA[i]);
+    PN[k] = ITEM;
+    printf("value of n : %d \n",N);
+
+    printf("The new elements of the array are : \n");
+    for(i = 0; i < 11 ; i++) {
+        printf("PN[%d] = %d \n", i , PN[i]);
     }
 }
