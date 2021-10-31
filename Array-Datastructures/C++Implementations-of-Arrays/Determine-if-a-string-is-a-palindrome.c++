@@ -7,7 +7,6 @@
 */
 
 // First Implementation
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -50,9 +49,25 @@ bool IsPalindrome(string S){
     }
 
     return isTrue;
-
 }
 
+// Second Implementation
+
+/*bool IsPalindrome2(string S){
+
+    string reversed = S;
+    bool IsTrue;
+
+    reverse(reversed.begin(),reversed.end());
+
+    if(S == reversed){
+        IsTrue = true;
+    }else{
+        IsTrue = false;
+    }
+    return IsTrue;
+}
+*/
 int main() {
     bool value = IsPalindrome("STRING");
 
