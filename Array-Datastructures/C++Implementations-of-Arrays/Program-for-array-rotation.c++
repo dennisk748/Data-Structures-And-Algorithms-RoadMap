@@ -7,6 +7,8 @@
 #include <cstdlib>
 #include <iostream>
 
+// First Implementation
+
 void rotate( int inputArray[] , int d, int n) {
      int i;
      int j;
@@ -25,10 +27,38 @@ void rotate( int inputArray[] , int d, int n) {
         }
  }
 
+ //Second Implementation
+
+ void rotate2(int array[],int d, int n){
+     int i;
+     int j;
+     int k;
+     int m = 0;
+     int N = d;
+     int step = d - 1;
+     int* temp = new int[N];
+     for(i = 0; i < d; i++){
+         temp[i] = array[i];
+     }
+     for(j = 0; j <= n; j++){
+        array[j] = array[j + d];
+        if(j >= (n - step)){
+            array[j] = 0;
+        }
+     }
+     for(k = n - step; k <= n; k++){
+         array[k] = temp[m];
+         m++;
+     }
+     for(i = 0; i <= n; i++){
+         printf(" complete[%d] : %d,\n",  i, array[i]);
+     }
+ }
+
  int main(){
      int ar[] = {1,2,3,4,5,6,7};
      int rotateBy = 3;
      int size = sizeof(ar)/sizeof(ar[0]);
      printf("%d  :  %d" , sizeof(ar),sizeof(ar[0]));
-     rotate(ar,rotateBy,size - 1);
+     rotate2(ar,rotateBy,size - 1);
  }
