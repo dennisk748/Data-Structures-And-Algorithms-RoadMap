@@ -112,34 +112,75 @@ void rotate( int inputArray[] , int d, int n) {
      }
  }
 
-void leftRotate(int arr[], int d, int n)
-{
-    /* To handle if d >= n */
-    d = d % n;
-    int g_c_d = gcd(d, n);
-    for (int i = 0; i < g_c_d; i++) {
-        /* move i-th values of blocks */
-        int temp = arr[i];
-        int j = i;
- 
-        while (1) {
-            int k = j + d;
-            if (k >= n)
-                k = k - n;
- 
-            if (k == i)
-                break;
- 
-            arr[j] = arr[k];
-            j = k;
-        }
-        arr[j] = temp;
-    }
-}
+
+ // Implementation 4 - A reversal algorithm
+ /** Let AB are the two parts of the input array where A = arr[0..d-1] and B = arr[d..n-1]. 
+  * The idea of the algorithm is : 
+    Reverse A to get ArB, where Ar is reverse of A.
+    Reverse B to get ArBr, where Br is reverse of B.
+    Reverse all to get (ArBr) r = BA.
+ **/
+ void Reverse(int arr[], int size, int totalSize){
+     int j = size - 1;
+     int mid0;
+     if(size % 2 == 0){
+        mid0 = (size/2) - 1;
+     }
+     else {
+        mid0 = (size/2);
+     }
+     for(int i = 0; i < mid0; i++){
+         int temp = arr[i];
+         arr[i] = arr[j];
+         arr[j] = temp;
+         j--;
+     }
+
+    int m = totalSize - 1;
+    int size1 = totalSize - size;
+    int mid1;
+    if(size1 % 2 == 0){
+        mid1 = (size1/2) - 1;
+     }
+     else {
+        mid1 = (size1/2);
+     }
+     for(int i = size; i < size + mid1; i++){
+         int temp = arr[i];
+         arr[i] = arr[m];
+         arr[m] = temp;
+         m--;
+     }
+ }
+
+ void ReversalAlgorithm(int arr[], int d, int n){
+     int mid2;
+     int k = n - 1;
+
+     Reverse(arr,d,n);
+     
+     if(n % 2 == 0){
+        mid2 = (n/2) - 1;
+     }
+     else {
+        mid2 = (n/2);
+     }
+     for(int i = 0; i < mid2; i++){
+         int temp = arr[i];
+         arr[i] = arr[k];
+         arr[k] = temp;
+         k--;
+     }
+
+     for(int i = 0; i < n; i++){
+         printf("arr[%d] = %d, \n", i, arr[i]);
+     }
+ }
+
  int main(){
      int ar[] = {1,2,3,4,5,6,7,8,9,10,11,12};
      int rotateBy = 3;
      int size = sizeof(ar)/sizeof(ar[0]);
      printf("%d  :  %d \n" , sizeof(ar),sizeof(ar[0]));
-     rotate3(ar,rotateBy,size);
+     ReversalAlgorithm(ar,rotateBy,size);
  }
